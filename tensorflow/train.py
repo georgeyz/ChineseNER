@@ -66,8 +66,7 @@ if len(sys.argv) == 2 and sys.argv[1] == "pretrained":
     embedding_pre = np.asarray(embedding_pre)
 
 if len(sys.argv) == 2 and sys.argv[1] == "test":
-    print
-    "begin to test..."
+    print("begin to test...")
     model = Model(config, embedding_pre, dropout_keep=1)
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())

@@ -72,8 +72,7 @@ def train(model, sess, saver, epochs, batch_size, data_train, data_test, id2word
     for epoch in range(epochs):
         for batch in range(batch_num):
             x_batch, y_batch = data_train.next_batch(batch_size)
-            print
-            x_batch.shape
+            print(x_batch.shape)
             feed_dict = {model.input_data: x_batch, model.labels: y_batch}
             pre, _ = sess.run([model.viterbi_sequence, model.train_op], feed_dict)
             acc = 0
@@ -82,15 +81,12 @@ def train(model, sess, saver, epochs, batch_size, data_train, data_test, id2word
                     for j in range(len(y_batch[0])):
                         if y_batch[i][j] == pre[i][j]:
                             acc += 1
-                print
-                float(acc) / (len(y_batch) * len(y_batch[0]))
+                print(float(acc) / (len(y_batch) * len(y_batch[0])))
         path_name = "./model/model" + str(epoch) + ".ckpt"
-        print
-        path_name
+        print(path_name)
         if epoch % 3 == 0:
             saver.save(sess, path_name)
-            print
-            "model has been saved"
+            print("model has been saved")
             entityres = []
             entityall = []
             for batch in range(batch_num):
@@ -169,11 +165,9 @@ def test_input(model, sess, word2id, id2tag, batch_size):
         feed_dict = {model.input_data: text_id}
         pre = sess.run([model.viterbi_sequence], feed_dict)
         entity = get_entity(text, pre[0], id2tag)
-        print
-        'result:'
+        print('result:')
         for i in entity:
-            print
-            i
+            print(i)
 
 
 def extraction(input_path, output_path, model, sess, word2id, id2tag, batch_size):

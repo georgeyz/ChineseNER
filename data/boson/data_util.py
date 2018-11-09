@@ -76,7 +76,6 @@ def data2pkl():
 
     
     import pickle
-    import os
     with open('../Bosondata.pkl', 'wb') as outp:
 	    pickle.dump(word2id, outp)
 	    pickle.dump(id2word, outp)
