@@ -1,4 +1,6 @@
 import numpy as np
+
+
 class BatchGenerator(object):
     """ Construct a Data generator. The input X, y should be ndarray or list like type.
     
@@ -9,8 +11,8 @@ class BatchGenerator(object):
         y = Data_train.y
         or:
         X_batch, y_batch = Data_train.next_batch(batch_size)
-     """ 
-    
+     """
+
     def __init__(self, X, y, shuffle=False):
         if type(X) != np.ndarray:
             X = np.asarray(X)
@@ -26,23 +28,23 @@ class BatchGenerator(object):
             new_index = np.random.permutation(self._number_examples)
             self._X = self._X[new_index]
             self._y = self._y[new_index]
-                
+
     @property
     def x(self):
         return self._X
-    
+
     @property
     def y(self):
         return self._y
-    
+
     @property
     def num_examples(self):
         return self._number_examples
-    
+
     @property
     def epochs_completed(self):
         return self._epochs_completed
-    
+
     def next_batch(self, batch_size):
         """ Return the next 'batch_size' examples from this data set."""
         start = self._index_in_epoch
@@ -60,4 +62,3 @@ class BatchGenerator(object):
             assert batch_size <= self._number_examples
         end = self._index_in_epoch
         return self._X[start:end], self._y[start:end]
-

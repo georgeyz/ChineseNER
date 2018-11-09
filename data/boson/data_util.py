@@ -31,9 +31,9 @@ def data2pkl():
             labels.append(linelabel)
 
     input_data.close()
-    print len(datas),tags
-    print len(labels)
-    from compiler.ast import flatten
+    print(len(datas),tags)
+    print(len(labels))
+    flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
     all_words = flatten(datas)
     sr_allwords = pd.Series(all_words)
     sr_allwords = sr_allwords.value_counts()
@@ -49,7 +49,7 @@ def data2pkl():
     id2tag = pd.Series(tags, index=tag_ids)
 
     word2id["unknow"] = len(word2id)+1
-    print word2id
+    print(word2id)
     max_len = 60
     def X_padding(words):
         ids = list(word2id[words])
@@ -88,7 +88,7 @@ def data2pkl():
 	    pickle.dump(y_test, outp)
 	    pickle.dump(x_valid, outp)
 	    pickle.dump(y_valid, outp)
-    print '** Finished saving the data.'
+    print('** Finished saving the data.')
     
     
     
