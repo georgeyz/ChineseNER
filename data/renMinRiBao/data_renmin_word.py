@@ -9,7 +9,7 @@ import collections
 
 
 def originHandle():
-    with open('./renmin.txt', 'r') as inp, open('./renmin2.txt', 'w') as outp:
+    with open('./renmin.txt', 'r', encoding='utf-8') as inp, open('./renmin2.txt', 'w', encoding='utf-8') as outp:
         for line in inp.readlines():
             line = line.split('  ')
             i = 1
@@ -37,7 +37,7 @@ def originHandle():
 
 
 def originHandle2():
-    with codecs.open('./renmin2.txt', 'r', 'utf-8') as inp, codecs.open('./renmin3.txt', 'w', 'utf-8') as outp:
+    with codecs.open('./renmin2.txt', 'r', encoding='utf-8') as inp, codecs.open('./renmin3.txt', 'w', encoding='utf-8') as outp:
         for line in inp.readlines():
             line = line.split(' ')
             i = 0
@@ -61,9 +61,9 @@ def originHandle2():
 
 
 def sentence2split():
-    with open('./renmin3.txt', 'r') as inp, codecs.open('./renmin4.txt', 'w', 'utf-8') as outp:
-        texts = inp.read().decode('utf-8')
-        sentences = re.split('[，。！？、‘’“”:]/[O]'.decode('utf-8'), texts)
+    with open('./renmin3.txt', 'r', encoding='utf-8') as inp, codecs.open('./renmin4.txt', 'w', encoding='utf-8') as outp:
+        texts = inp.read()
+        sentences = re.split('[，。！？、‘’“”:]/[O]', texts)
         for sentence in sentences:
             if sentence != " ":
                 outp.write(sentence.strip() + '\n')
