@@ -22,8 +22,8 @@ import torch.autograd as autograd
 import torch.nn as nn
 import torch.optim as optim
 import codecs
-from .BiLSTM_CRF import BiLSTM_CRF
-from .resultCal import calculate
+from BiLSTM_CRF import BiLSTM_CRF
+from resultCal import calculate
 
 #############
 START_TAG = "<START>"

@@ -9,9 +9,9 @@ import math
 import numpy as np
 
 import tensorflow as tf
-from .Batch import BatchGenerator
-from .bilstm_crf import Model
-from .utils import *
+from Batch import BatchGenerator
+from bilstm_crf import Model
+from utils import *
 
 with open('../data/renmindata.pkl', 'rb') as inp:
     word2id = pickle.load(inp)
