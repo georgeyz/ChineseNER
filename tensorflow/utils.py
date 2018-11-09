@@ -175,7 +175,7 @@ def extraction(input_path, output_path, model, sess, word2id, id2tag, batch_size
     text = []
     with codecs.open(input_path, 'rb', 'utf8') as inp:
         for line in inp.readlines():
-            line = re.split('[，。！？、‘’“”（）]'.decode('utf-8'), line.strip())
+            line = re.split('[，。！？、‘’“”（）]', line.strip())
             for sentence in line:
                 if sentence == '' or sentence == ' ':
                     continue
